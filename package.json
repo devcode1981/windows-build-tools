@@ -8,9 +8,10 @@
     "unit": "jest",
     "postinstall": "node ./dist/index.js",
     "build": "tsc -p tsconfig.json",
-    "prepare": "npm run build",
+    "prepare": "npm run snyk-protect && npm run build",
     "start": "npm run build && npm run postinstall",
-    "lint": "tslint -c tslint.json -p tsconfig.json \"src/**/*.ts\""
+    "lint": "tslint -c tslint.json -p tsconfig.json \"src/**/*.ts\"",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -52,7 +53,8 @@
     "fs-extra": "^8.0.1",
     "in-gfw": "^1.2.0",
     "nugget": "^2.0.1",
-    "string-width": "^4.1.0"
+    "string-width": "^4.1.0",
+    "@snyk/protect": "latest"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -71,5 +73,6 @@
     "testMatch": [
       "**/__tests__/**/*-test.+(ts|tsx|js)"
     ]
-  }
+  },
+  "snyk": true
 }
